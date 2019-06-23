@@ -1,0 +1,66 @@
+4.7.1
+for i in range(1,10):
+    for j in range(1,i+1):
+        print('%d x %d = %2d\t',end='')
+    print()
+
+
+4.7.2
+n = eval(input('输入N的值：'))
+for i in range(n):
+    s = [' ']*(n - i - 1) + ['*']*(1+ 2*i )
+    for j in range(len(s)):
+        print(s[j],end='')
+    print()
+
+4.7.3def sudoku_rule(n,sudoku):
+
+    tx = n//2
+    ty = 0
+    for i in range(n*n):
+        sudoku[ty][tx] = i + 1
+        tx = tx+1
+        ty = ty-1
+        if ty<0 and tx>=n:      #条件（4）
+            tx = tx-1
+            ty = ty+2
+        elif ty<0:              #条件(3)
+            ty = n-1
+        elif tx>=n:             #条件(2)
+            tx = 0
+        elif sudoku[ty][tx]!=0: #条件(5)
+            tx = tx-1
+            ty = ty+2
+    return sudoku
+
+
+n = eval(input('请输入奇数n的值：'))
+sudoku = [[0 for i in range(n)] for i in range(n)]
+s = sudoku_rule(n,sudoku)
+for line in s:
+    for i in line:
+        print('%02d ' % i,end='')
+    print()
+
+4.7.4
+n = int(input('请输入n的值（n要为奇数）：'))
+if n % 2 ==0:
+    import os
+    os._exit(0)
+for i in range(n//2 +1):
+    s = [' ']*(n//2 - i) + ['*']*(1 + i*2)
+    for j in s:
+        print('%s' % j ,end='')
+    print()
+for i in range(n//2 ):
+    s = [' ']*(1 + i ) + ['*']*( 1 +(n//2 - i -1)*2 )
+    for j in s:
+        print('%s' % j,end='')
+    print()
+
+    
+4.7.5
+
+
+
+
